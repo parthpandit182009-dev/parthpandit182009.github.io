@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Source+Sans+Pro:wght@400;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,9 +12,10 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Source Sans Pro', sans-serif;
-  background: #0a0a0a;
-  color: #e8e7e6;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #080808;
+  color: #F2EFE9;
 }
 
 * {
@@ -24,36 +23,14 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
 }
 
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+button {
+  font: inherit;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgba(158, 150, 150, 0.2);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(158, 150, 150, 0.4);
-}
-
-/* Typography */
-h1,
-h2,
-h3 {
-  font-family: 'Syne', sans-serif;
-}
-
-/* Transitions */
-button,
-a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+::selection {
+  background: rgba(232, 197, 71, 0.18);
 }
