@@ -1,89 +1,63 @@
 'use client'
 
 import { useRef } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Environment, Html } from '@react-three/drei'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { View, Text } from 'react-bits'
-
-function BeachGlow() {
-  const ref = useRef()
-  useFrame((state, delta) => {
-    if (ref.current) {
-      ref.current.rotation.y += delta * 0.16
-    }
-  })
-
-  return (
-    <Float floatIntensity={2} rotationIntensity={0.5} speed={1.1}>
-      <mesh ref={ref} position={[0, 0.6, 0]}>
-        <icosahedronGeometry args={[1.45, 3]} />
-        <meshStandardMaterial color="#5BC4BF" emissive="#9EE3DA" roughness={0.28} metalness={0.25} />
-      </mesh>
-      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.25, 0]}>
-        <cylinderGeometry args={[2.9, 2.9, 0.14, 48]} />
-        <meshStandardMaterial color="#E8A87C" roughness={0.9} />
-      </mesh>
-    </Float>
-  )
-}
+import { Canvas } from '@react-three/fiber'
+import SurfboardBurst from './SurfboardBurst'
+import { SurfboardModel } from './BeachModels'
 
 export default function Hero() {
-  const ref = useRef(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] })
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9])
-  const y = useTransform(scrollYProgress, [0, 1], [0, -120])
+  const sectionRef = useRef(null)
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], [0, -80])
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -18])
 
   return (
-    <section id="hero" ref={ref} className="relative overflow-hidden px-6 pt-28 pb-24 sm:px-8 lg:pb-32">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: 'easeOut' }} className="space-y-8">
-          <span className="inline-flex rounded-full bg-ocean/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-ocean/90 sm:text-sm">
-            oceanfront design
+    <section id="hero" ref={sectionRef} className="relative px-6 pb-24 pt-28 sm:px-8 lg:pb-32 lg:pt-32">
+      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+        <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="space-y-8">
+          <span className="inline-flex rounded-full bg-[#FFD166] px-4 py-2 text-sm font-semibold uppercase tracking-[0.24em] text-[#1A3A5C]">
+            🌊 beachy web fun
           </span>
-          <div className="space-y-6">
-            <h1 className="max-w-3xl text-5xl font-semibold leading-tight tracking-[-0.05em] text-driftwood sm:text-6xl lg:text-7xl">
-              I build immersive digital experiences with calm, cinematic motion.
+          <div className="space-y-5">
+            <h1 className="max-w-3xl text-5xl font-semibold leading-[0.95] text-[#1A3A5C] sm:text-6xl lg:text-7xl" style={{ fontFamily: 'var(--font-head)' }}>
+              Riding the digital wave 🏄
             </h1>
-            <p className="max-w-2xl text-base leading-8 text-driftwood/75 sm:text-lg">
-              A beachfront portfolio where light motion, 3D shorelines, and polished interaction meet modern product storytelling.
+            <p className="max-w-2xl text-lg leading-8 text-[#1A3A5C]/80">
+              I make playful product experiences that feel like a sunny beach day and a smart launch strategy rolled into one. {/* Replace with your real intro. */}
             </p>
           </div>
 
           <div className="flex flex-wrap gap-4">
-            <a href="#contact" className="inline-flex rounded-full bg-ocean px-6 py-3 text-sm font-semibold text-white transition hover:shadow-[0_16px_30px_-18px_rgba(13,59,94,0.9)]">
-              Let’s connect
-            </a>
-            <a href="#work" className="inline-flex items-center rounded-full border border-ocean/15 px-6 py-3 text-sm font-semibold text-driftwood transition hover:border-ocean hover:text-ocean">
-              Explore projects
-            </a>
+            <SurfboardBurst>
+              <a href="#contact" className="inline-flex rounded-full bg-[#FF6B6B] px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-[#FF6B6B]/20 transition hover:-translate-y-1">
+                Splash me a hello
+              </a>
+            </SurfboardBurst>
+            <SurfboardBurst>
+              <a href="#projects" className="inline-flex rounded-full border border-[#2EC4B6]/40 bg-white/80 px-6 py-3 text-sm font-semibold text-[#1A3A5C] transition hover:-translate-y-1">
+                Peek at projects
+              </a>
+            </SurfboardBurst>
           </div>
 
-          <View style={{ alignItems: 'flex-start', padding: 16, borderRadius: 24, backgroundColor: 'rgba(245, 236, 215, 0.92)', maxWidth: 420 }}>
-            <Text style={{ fontSize: 13, fontWeight: 700, color: '#0D3B5E', marginBottom: 8 }}>
-              cross-platform story
-            </Text>
-            <Text style={{ fontSize: 15, lineHeight: 1.6, color: '#3E3A3A' }}>
-              React Bits powers the shore-ready system in this experience, bringing consistent UX into a web-first portfolio.
-            </Text>
-          </View>
+          <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 1.6, repeat: Infinity }} className="inline-flex items-center gap-3 rounded-full border border-white/70 bg-white/70 px-4 py-2 text-sm font-semibold text-[#1A3A5C] shadow-sm">
+            <span className="text-lg">⬇️</span>
+            Scroll for the tide
+          </motion.div>
         </motion.div>
 
-        <motion.div style={{ scale, y }} className="relative isolate overflow-hidden rounded-[32px] border border-white/60 bg-white/80 p-4 shadow-[0_40px_120px_-45px_rgba(13,59,94,0.45)] sm:p-6">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-white/90 to-transparent" />
-          <div className="relative h-[520px] w-full rounded-[28px] bg-sky/10 shadow-[inset_0_0_120px_rgba(255,255,255,0.8)] lg:h-[580px]">
-            <Canvas camera={{ position: [0, 1.25, 6], fov: 28 }} className="rounded-[28px]">
-              <ambientLight intensity={0.8} />
-              <spotLight position={[10, 12, 10]} angle={0.22} penumbra={0.7} intensity={1.5} />
-              <BeachGlow />
-              <Environment preset="sunset" />
+        <motion.div style={{ y, rotate }} className="relative overflow-hidden rounded-[32px] border border-white/70 bg-white/70 p-4 shadow-[0_30px_80px_-25px_rgba(26,58,92,0.28)] sm:p-6">
+          <div className="relative h-[470px] w-full rounded-[28px] bg-[radial-gradient(circle_at_top,_rgba(255,209,102,0.45),_transparent_45%)] lg:h-[560px]">
+            <Canvas camera={{ position: [0, 1.2, 5.8], fov: 28 }}>
+              <ambientLight intensity={0.9} />
+              <directionalLight position={[3, 4, 3]} intensity={1.4} />
+              <pointLight position={[0, 2, 2]} intensity={0.8} color="#FFD166" />
+              <SurfboardModel />
             </Canvas>
           </div>
-          <div className="absolute bottom-4 left-4 right-4 rounded-3xl border border-white/70 bg-white/80 p-4 backdrop-blur-sm">
-            <p className="text-sm uppercase tracking-[0.32em] text-ocean/80">Tide pool experience</p>
-            <p className="mt-2 text-base leading-7 text-driftwood/85">
-              Smooth motion, warm gradients, and a calm interface frame the portfolio’s shore-to-horizon story.
-            </p>
+          <div className="absolute bottom-4 left-4 right-4 rounded-[24px] border border-white/80 bg-white/85 p-4 text-sm leading-7 text-[#1A3A5C] shadow-sm">
+            Tiny detail: this board is always ready for the next bright idea. {/* Replace with your favorite tagline. */}
           </div>
         </motion.div>
       </div>
