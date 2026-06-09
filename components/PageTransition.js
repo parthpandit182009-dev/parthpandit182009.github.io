@@ -3,34 +3,34 @@
 import { motion } from 'framer-motion'
 
 const BUBBLES = [
-  { cx: 350, cy: 200, r: 6, delay: 0.1 },
-  { cx: 450, cy: 350, r: 4, delay: 0.25 },
-  { cx: 380, cy: 550, r: 8, delay: 0.05 },
-  { cx: 500, cy: 750, r: 5, delay: 0.3 },
-  { cx: 620, cy: 280, r: 7, delay: 0.15 },
-  { cx: 540, cy: 480, r: 5, delay: 0.35 },
-  { cx: 680, cy: 620, r: 10, delay: 0.08 },
-  { cx: 480, cy: 820, r: 6, delay: 0.22 },
-  { cx: 410, cy: 450, r: 8, delay: 0.12 },
+  { cx: 1090, cy: 200, r: 6, delay: 0.1 },
+  { cx: 990, cy: 350, r: 4, delay: 0.25 },
+  { cx: 1060, cy: 500, r: 8, delay: 0.05 },
+  { cx: 940, cy: 750, r: 5, delay: 0.3 },
+  { cx: 820, cy: 280, r: 7, delay: 0.15 },
+  { cx: 900, cy: 480, r: 5, delay: 0.35 },
+  { cx: 760, cy: 620, r: 10, delay: 0.08 },
+  { cx: 960, cy: 820, r: 6, delay: 0.22 },
+  { cx: 1030, cy: 450, r: 8, delay: 0.12 },
   { cx: 720, cy: 400, r: 4, delay: 0.4 }
 ]
 
 const waveVariants = {
   initial: { x: '0vw' },
   animate: (i) => ({
-    x: '-100vw',
+    x: '100vw',
     transition: {
-      duration: 0.5,
+      duration: 0.75,
       ease: 'easeInOut',
-      delay: i * 0.08
+      delay: i * 0.1
     }
   }),
   exit: (i) => ({
-    x: ['100vw', '0vw'],
+    x: ['-100vw', '0vw'],
     transition: {
-      duration: 0.5,
+      duration: 0.75,
       ease: 'easeInOut',
-      delay: i * 0.08
+      delay: i * 0.1
     }
   })
 }
@@ -83,12 +83,15 @@ export default function PageTransition({ children }) {
           <svg viewBox="0 0 1440 900" preserveAspectRatio="none" className="w-full h-full overflow-visible">
             {/* Wave Body */}
             <path 
-              d="M 1440,0 L 50,0 C -80,30 -200,80 -200,160 C -200,220 -120,220 -80,240 C -40,260 -180,340 -180,380 C -180,440 -20,480 -60,620 C -100,720 -150,780 -150,830 C -150,860 -20,880 50,900 L 1440,900 Z" 
+              d="M 0,0 L 1390,0 C 1520,30 1640,80 1640,160 C 1640,220 1560,220 1520,240 C 1480,260 1620,340 1620,380 C 1620,440 1460,480 1500,620 C 1540,720 1590,780 1590,830 C 1590,860 1460,880 1390,900 L 0,900 Z" 
               fill="#1A3A5C" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
             {/* Water Depth Lines */}
             <path 
-              d="M 100,280 C 160,420 120,580 150,720" 
+              d="M 1340,280 C 1280,420 1320,580 1290,720" 
               fill="none" 
               stroke="#122234" 
               strokeWidth="4" 
@@ -96,7 +99,7 @@ export default function PageTransition({ children }) {
               opacity="0.4" 
             />
             <path 
-              d="M 250,150 C 320,380 280,630 330,850" 
+              d="M 1190,150 C 1120,380 1160,630 1110,850" 
               fill="none" 
               stroke="#122234" 
               strokeWidth="4" 
@@ -105,8 +108,11 @@ export default function PageTransition({ children }) {
             />
             {/* Foam Cap */}
             <path 
-              d="M 50,0 C -80,30 -200,80 -200,160 C -200,220 -120,220 -80,240 C -40,260 -180,340 -180,380 C -160,360 -130,360 -110,340 C -70,300 -160,260 -160,200 C -160,140 -60,110 0,90 C 30,70 40,30 50,0 Z" 
+              d="M 1390,0 C 1520,30 1640,80 1640,160 C 1640,220 1560,220 1520,240 C 1480,260 1620,340 1620,380 C 1600,360 1570,360 1550,340 C 1510,300 1600,260 1600,200 C 1600,140 1500,110 1440,90 C 1410,70 1400,30 1390,0 Z" 
               fill="#FFFFFF" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
           </svg>
         </motion.div>
@@ -123,12 +129,15 @@ export default function PageTransition({ children }) {
           <svg viewBox="0 0 1440 900" preserveAspectRatio="none" className="w-full h-full overflow-visible">
             {/* Wave Body */}
             <path 
-              d="M 1440,0 L 150,0 C 20,40 -100,70 -100,120 C -100,160 -40,170 -10,200 C 20,230 -60,290 -60,350 C -60,420 120,480 80,580 C 60,680 -10,750 -10,820 C -10,860 110,880 150,900 L 1440,900 Z" 
+              d="M 0,0 L 1290,0 C 1420,40 1540,70 1540,120 C 1540,160 1480,170 1450,200 C 1420,230 1500,290 1500,350 C 1500,420 1320,480 1360,580 C 1380,680 1450,750 1450,820 C 1450,860 1330,880 1290,900 L 0,900 Z" 
               fill="#1A8C88" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
             {/* Water Depth Lines */}
             <path 
-              d="M 200,270 C 260,410 220,570 250,710" 
+              d="M 1140,270 C 1080,410 1120,570 1090,710" 
               fill="none" 
               stroke="#11625F" 
               strokeWidth="4" 
@@ -136,7 +145,7 @@ export default function PageTransition({ children }) {
               opacity="0.4" 
             />
             <path 
-              d="M 350,140 C 420,370 380,620 430,840" 
+              d="M 1090,140 C 1020,370 1060,620 1010,840" 
               fill="none" 
               stroke="#11625F" 
               strokeWidth="4" 
@@ -145,8 +154,11 @@ export default function PageTransition({ children }) {
             />
             {/* Foam Cap */}
             <path 
-              d="M 150,0 C 20,40 -100,70 -100,120 C -100,160 -40,170 -10,200 C 10,210 10,190 -10,170 C -40,140 -70,130 -40,100 C -10,70 10,30 150,0 Z" 
+              d="M 1290,0 C 1420,40 1540,70 1540,120 C 1540,160 1480,170 1450,200 C 1450,170 1480,140 1480,100 C 1450,70 1430,30 1290,0 Z" 
               fill="#FFFFFF" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
           </svg>
         </motion.div>
@@ -163,12 +175,15 @@ export default function PageTransition({ children }) {
           <svg viewBox="0 0 1440 900" preserveAspectRatio="none" className="w-full h-full overflow-visible">
             {/* Wave Body */}
             <path 
-              d="M 1440,0 L 250,0 C 120,30 0,70 0,140 C 0,200 70,200 110,220 C 150,240 10,320 10,360 C 10,420 190,460 150,600 C 110,700 60,760 60,810 C 60,840 190,870 250,900 L 1440,900 Z" 
+              d="M 0,0 L 1190,0 C 1320,30 1440,70 1440,140 C 1440,200 1370,200 1330,220 C 1290,240 1430,320 1430,360 C 1430,420 1250,460 1290,600 C 1330,700 1380,760 1380,810 C 1380,840 1250,870 1190,900 L 0,900 Z" 
               fill="#2EC4B6" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
             {/* Water Depth Lines */}
             <path 
-              d="M 300,260 C 360,400 320,560 350,700" 
+              d="M 1140,260 C 1080,400 1120,560 1090,700" 
               fill="none" 
               stroke="#1E8C82" 
               strokeWidth="4" 
@@ -176,7 +191,7 @@ export default function PageTransition({ children }) {
               opacity="0.5" 
             />
             <path 
-              d="M 450,130 C 520,360 380,610 430,830" 
+              d="M 990,130 C 920,360 960,610 910,830" 
               fill="none" 
               stroke="#1E8C82" 
               strokeWidth="4" 
@@ -185,8 +200,11 @@ export default function PageTransition({ children }) {
             />
             {/* Foam Cap */}
             <path 
-              d="M 250,0 C 120,30 0,70 0,140 C 0,200 70,200 110,220 C 130,230 130,210 110,190 C 80,160 50,150 80,120 C 110,90 130,50 250,0 Z" 
+              d="M 1190,0 C 1320,30 1440,70 1440,140 C 1440,200 1370,200 1330,220 C 1310,230 1310,210 1330,190 C 1360,160 1390,150 1360,120 C 1330,90 1310,50 1190,0 Z" 
               fill="#FFFFFF" 
+              stroke="#1A3A5C"
+              strokeWidth="8"
+              strokeLinejoin="round"
             />
 
             {/* Bubble Circles */}
@@ -199,7 +217,7 @@ export default function PageTransition({ children }) {
                 fill="white"
                 variants={bubbleVariants}
                 transition={{
-                  delay: (2 * 0.08) + bubble.delay // Front wave stagger + bubble delay
+                  delay: (2 * 0.1) + bubble.delay // Front wave stagger + bubble delay
                 }}
               />
             ))}
