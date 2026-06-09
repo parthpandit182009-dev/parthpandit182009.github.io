@@ -1,6 +1,6 @@
 'use client'
 
-import PageTransition from '@/components/PageTransition'
+import PageTransition from '../../components/PageTransition'
 
 const skills = ['Next.js', 'Tailwind CSS', 'Framer Motion', 'GitHub']
 
