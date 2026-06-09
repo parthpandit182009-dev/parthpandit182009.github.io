@@ -1,7 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
-
 export default function HomePage() {
   return (
     <section className="relative min-h-[calc(100vh-64px)] overflow-hidden bg-[#87CEEB] text-[#1A3A5C]">
@@ -77,7 +75,7 @@ export default function HomePage() {
       </div>
 
       <div className="relative z-20 mx-auto flex min-h-[calc(100vh-64px)] w-full max-w-6xl items-center px-6 py-16 sm:px-8 lg:px-10">
-        <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.35 }} className="mx-auto max-w-3xl rounded-[32px] border border-white/70 bg-white/70 p-8 text-center shadow-[0_24px_70px_-24px_rgba(26,58,92,0.35)] backdrop-blur-md sm:p-10 lg:p-12">
+        <div className="mx-auto max-w-3xl rounded-[32px] border border-white/70 bg-white/70 p-8 text-center shadow-[0_24px_70px_-24px_rgba(26,58,92,0.35)] backdrop-blur-md sm:p-10 lg:p-12">
           <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#FF6B6B]">Parth Pandit</p>
           <h1 className="mt-3 text-4xl font-semibold leading-tight text-[#1A3A5C] sm:text-5xl lg:text-6xl" style={{ fontFamily: 'var(--font-head)' }}>
             Creative developer with a bright beachside vibe.
@@ -89,7 +87,7 @@ export default function HomePage() {
             <a href="/projects" className="rounded-full bg-[#2EC4B6] px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-[#1A3A5C]">View Projects</a>
             <a href="/contact" className="rounded-full border border-[#1A3A5C]/20 bg-white/90 px-5 py-3 text-sm font-semibold text-[#1A3A5C] shadow-sm transition hover:bg-[#FFF3D6]">Contact Me</a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
