@@ -3,6 +3,8 @@
 import './globals.css'
 import Link from 'next/link'
 import { Righteous, Poppins } from 'next/font/google'
+import { usePathname } from 'next/navigation'
+import { AnimatePresence } from 'framer-motion'
 
 const righteous = Righteous({
   subsets: ['latin'],
@@ -27,6 +29,8 @@ const links = [
 ]
 
 export default function RootLayout({ children }) {
+  const pathname = usePathname()
+
   return (
     <html lang="en">
       <body className={`${righteous.variable} ${poppins.variable} min-h-screen bg-[#FFF3D6] text-[#1A3A5C] antialiased`}>
@@ -47,7 +51,13 @@ export default function RootLayout({ children }) {
               </ul>
             </nav>
           </header>
-          <main>{children}</main>
+          <main>
+            <AnimatePresence mode="wait">
+              <div key={pathname}>
+                {children}
+              </div>
+            </AnimatePresence>
+          </main>
         </div>
       </body>
     </html>
