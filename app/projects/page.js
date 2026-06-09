@@ -1,3 +1,5 @@
+'use client'
+
 import Navigation from '../components/Navigation'
 import Projects from '../components/Projects'
 import PageShell from '../components/PageShell'

@@ -1,3 +1,5 @@
+'use client'
+
 import Navigation from '../components/Navigation'
 import Contact from '../components/Contact'
 import PageShell from '../components/PageShell'

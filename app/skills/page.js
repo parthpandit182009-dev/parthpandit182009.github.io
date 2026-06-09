@@ -1,3 +1,5 @@
+'use client'
+
 import Navigation from '../components/Navigation'
 import Skills from '../components/Skills'
 import PageShell from '../components/PageShell'
