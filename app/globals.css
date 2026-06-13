@@ -5,7 +5,6 @@
 :root {
   color-scheme: light;
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  background-color: #FFF3D6;
 }
 
 html {
@@ -14,8 +13,8 @@ html {
 
 body {
   min-height: 100vh;
-  background: linear-gradient(180deg, #FFF3D6 0%, #FFF7E8 45%, #2EC4B6 100%);
-  color: #1A3A5C;
+  background: transparent;
+  color: white;
 }
 
 * { box-sizing: border-box; }
